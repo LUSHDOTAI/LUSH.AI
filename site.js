@@ -2,6 +2,7 @@
   /* ── Session memory: once you've entered (or visited any inner page), the
         Home/logo link lands straight on the content instead of the gate ── */
   var seen=false; try{ seen = sessionStorage.getItem('lush_entered')==='1'; }catch(e){}
+  var front = location.search.indexOf('front') !== -1;  /* logo click → replay the front animation */
   if(document.body.classList.contains('entered')){
     try{ sessionStorage.setItem('lush_entered','1'); }catch(e){}
   }
@@ -10,8 +11,9 @@
   var btn=document.querySelector('.enter-btn');
   var gate=document.getElementById('gate');
   if(btn&&gate){
-    if(seen){
-      /* returning within the session → skip the animation, show content */
+    if(seen && !front){
+      /* returning within the session → skip the animation, show content
+         (the top-left logo adds ?front to force the gate to replay) */
       document.body.classList.add('entered');
       gate.style.display='none';
     }
