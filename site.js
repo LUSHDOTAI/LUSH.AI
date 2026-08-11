@@ -1,9 +1,22 @@
 (function(){
+  /* ── Session memory: once you've entered (or visited any inner page), the
+        Home/logo link lands straight on the content instead of the gate ── */
+  var seen=false; try{ seen = sessionStorage.getItem('lush_entered')==='1'; }catch(e){}
+  if(document.body.classList.contains('entered')){
+    try{ sessionStorage.setItem('lush_entered','1'); }catch(e){}
+  }
+
   /* ── Enter gate — present on the landing page only ── */
   var btn=document.querySelector('.enter-btn');
   var gate=document.getElementById('gate');
   if(btn&&gate){
+    if(seen){
+      /* returning within the session → skip the animation, show content */
+      document.body.classList.add('entered');
+      gate.style.display='none';
+    }
     btn.addEventListener('click',function(){
+      try{ sessionStorage.setItem('lush_entered','1'); }catch(e){}
       document.body.classList.add('entered');
       gate.style.opacity='0';
       gate.style.pointerEvents='none';
