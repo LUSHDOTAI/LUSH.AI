@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUSH.AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;1,500&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="topbar">
+  <a href="index.html" class="tb-brand">LUSH<span>.AI</span></a>
+  <nav class="tb-nav">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="projects/index.html">Projects</a>
+    <a href="publications/index.html">Publications</a>
+    <a href="capabilities/index.html">Capabilities</a>
+    <a href="team/index.html">Team</a>
+    <a href="contact/index.html">Contact</a>
+  </nav>
+  <a href="mailto:contact@lush.ai" class="tb-cta">Contact</a>
+  <button class="tb-menu-btn" aria-label="Open menu">☰</button>
+</header>
+
+<div id="backgroundText"><h1>LUSH<span id="treeOrigin" class="rainbow-circle"></span>AI</h1></div>
+<canvas id="growthCanvas"></canvas>
+
+<div id="gate">
+  <div class="gate-inner">
+    <p class="gate-kicker">Applied research · Honolulu</p>
+    <button class="enter-btn">Enter</button>
+  </div>
+</div>
+<main id="site">
+  <div class="wrap">
+    <section class="panel span2" id="top">
+      <span class="kick">01 · Applied research</span>
+      <h2 class="h">Everything here grows from <span class="em">one idea</span>.</h2>
+      <p class="body">LUSH.AI is an applied research company. We explore what complex information becomes when it's treated as a living system. The apps, the analysis, and the publications below are some of the forms that work takes — not the whole of it.</p>
+      <div class="btn-row">
+        <a href="projects/index.html" class="mini solid">Explore the work →</a>
+        <a href="publications/index.html" class="mini">Publications →</a>
+      </div>
+    </section>
+    <section class="panel span2 trunk">
+      <span class="kick" style="color:var(--pink2)">The shape of it</span>
+      <h2 class="h">LUSH.AI is the <span class="em">trunk</span>. The apps, the data work, and the publications are <span class="em">branches</span> of the same organism.</h2>
+      <div class="tagrow" style="justify-content:center;margin-top:24px">
+        <a href="projects/index.html" class="tg solid">Projects →</a>
+        <a href="publications/index.html" class="tg">Publications →</a>
+        <a href="capabilities/index.html" class="tg">Capabilities →</a>
+        <a href="team/index.html" class="tg">Team →</a>
+        <a href="contact/index.html" class="tg">Contact →</a>
+      </div>
+    </section>
+    <div class="foot">© 2026 LUSH.AI — Prototype build, placeholder content</div>
+  </div>
+</main>
+
+<script src="tree.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
