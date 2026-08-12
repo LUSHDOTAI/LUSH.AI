@@ -26,6 +26,19 @@
     });
   }
 
+  /* ── Dark / light theme toggle (persists in localStorage; head sets it early) ── */
+  var themeBtn=document.querySelector('.tb-theme');
+  function themeIcon(){ if(themeBtn) themeBtn.textContent = (document.documentElement.getAttribute('data-theme')==='light' ? '☀' : '☾'); }
+  themeIcon();
+  if(themeBtn){
+    themeBtn.addEventListener('click',function(){
+      var next = document.documentElement.getAttribute('data-theme')==='light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      try{ localStorage.setItem('lush_theme', next); }catch(e){}
+      themeIcon();
+    });
+  }
+
   /* ── Mobile menu toggle ── */
   var mb=document.querySelector('.tb-menu-btn');
   var nav=document.querySelector('.tb-nav');
