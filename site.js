@@ -1,19 +1,25 @@
 (function(){
   /* ── Session memory: once you've entered (or visited any inner page), the
         Home/logo link lands straight on the content instead of the gate ── */
-  var seen=false; try{ seen = sessionStorage.getItem('lush_entered')==='1'; }catch(e){}
-  var front = location.search.indexOf('front') !== -1;  /* logo click → replay the front animation */
+  var seen=false, showFront=false;
+  try{ seen = sessionStorage.getItem('lush_entered')==='1'; }catch(e){}
+  /* the logo sets this flag on click; also honour ?front / #front in the URL */
+  try{ showFront = sessionStorage.getItem('lush_show_front')==='1'; if(showFront) sessionStorage.removeItem('lush_show_front'); }catch(e){}
+  if(location.search.indexOf('front')!==-1 || location.hash.indexOf('front')!==-1) showFront=true;
   if(document.body.classList.contains('entered')){
     try{ sessionStorage.setItem('lush_entered','1'); }catch(e){}
   }
+  /* top-left logo → always replay the front gate (robust to any URL rewriting) */
+  var logo=document.querySelector('.tb-brand');
+  if(logo){ logo.addEventListener('click',function(){ try{ sessionStorage.setItem('lush_show_front','1'); }catch(e){} }); }
 
   /* ── Enter gate — present on the landing page only ── */
   var btn=document.querySelector('.enter-btn');
   var gate=document.getElementById('gate');
   if(btn&&gate){
-    if(seen && !front){
-      /* returning within the session → skip the animation, show content
-         (the top-left logo adds ?front to force the gate to replay) */
+    if(seen && !showFront){
+      /* returning within the session → skip the animation, show content;
+         the logo's flag / ?front forces the gate to replay */
       document.body.classList.add('entered');
       gate.style.display='none';
     }
